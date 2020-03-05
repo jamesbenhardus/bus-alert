@@ -18,7 +18,12 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.stopInfo$ = timer(100, 30000).pipe(
       switchMap(() => {
-        return this.service.getStopInfo(19490);
+        return this.service.getStopInfo(19490).pipe(
+          map(response => {
+            const first = response[0];
+            return first.DepartureText;
+          })
+        );
       })
     );
   }

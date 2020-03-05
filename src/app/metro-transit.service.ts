@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class MetroTransitService {
   }
 
   getStopInfo(stop) {
-    const url = this.apiBase + stop;
-    return this.http.get(url, { headers: this.headers });
+    const url = this.apiBase + stop + '?format=json';
+    // return this.http.get(url, { headers: this.headers });
+    return from(fetch(url).then(response => response.json()));
   }
 }
