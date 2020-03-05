@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MetroTransitService {
-  private apiBase = ' http://svc.metrotransit.org/NexTrip/';
+  private apiBase = ' https://svc.metrotransit.org/NexTrip/';
   private headers = new HttpHeaders();
 
   constructor(private http: HttpClient) {
