@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
         return this.service.getStopInfo(19490).pipe(
           map(response => {
             const first = response[0];
-            return first.DepartureText;
+            const departureText = first.DepartureText;
+            const splitText = departureText.split(' ');
+            return splitText[0];
           })
         );
       })
